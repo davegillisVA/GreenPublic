@@ -1,0 +1,47 @@
+<section class="admin">
+
+    {{#if contentType}}
+    <a href="/admin">Go Back</a>
+    <h2>{{ contentType }} Administration</h2>
+    <section class="product-management">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Cost</th>
+                    <th>Quantity</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            {{#each content}}
+            <tr class="product-row">
+                <td>
+                    <img src="../images/{{this.thumbnail}}.jpg" alt="{{this.name}}" width="50px" height="50px">
+                </td>
+                <td>{{ this.name }}</td>
+                <td>{{ this.description }}</td>
+                <td>{{ this.cost }}</td>
+                <td>{{ this.qtyAvailable }}</td>
+                <td><a class="cta edit" href="products/edit/{{this.id}}">Edit</a></td>
+                <td><a class="cta delete" href="products/delete/{{this.id}}">Delete</a></td>
+            </tr>
+            {{/each}}
+        </table>
+        {{!-- <button>Create New Product</button> --}}
+        <a class="cta buy" href="/admin/product/create">Create New Product</a>
+    </section>
+    {{else}}
+    <h2>{{ title }} Administration</h2>
+
+    <section class="product-management">
+        {{#each types}}
+        <a href="admin/{{this}}">{{this}}</a>
+        {{/each}}
+    </section>
+    {{/if}}
+
+
+</section>
